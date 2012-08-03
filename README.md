@@ -3,15 +3,15 @@ FelixColorPicker is static colorpicker.
 
 ## Usage
 ### HTML
-'''html
+```html
 <div></div>
 <input type="button" value="ColorPicker" />
-'''
+```
 
 ### Javascript
-'''Javascript
+```Javascript
 $('div').felixColorPicker();
 $('input').felixColorPicker({
 	pickerMode: true
 });
-'''
+```
