@@ -1,19 +1,312 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Color Picker</title>
+	<title>Felix Color Picker</title>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script type="text/javascript" src="js/felixColorPicker.js"></script>
-	<script type="text/javascript">
-		$(function (){
-			$('div').felixColorPicker();
-			$('input').felixColorPicker({
-				pickerMode: true
-			});
-		});
-	</script>
+
+	<script type="text/javascript" src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-responsive.min.css" />
+
+	<script type="text/javascript" src="google-code-prettify/prettify.js"></script>
+	<link rel="stylesheet" href="google-code-prettify/prettify.css">
+
+	<script type="text/javascript" src="js/jquery.FelixColorPicker.js"></script>
+
+	<script type="text/javascript" src="application.js"></script>
+	<link rel="stylesheet" href="application.css" />
 </head>
 <body>
-	<div></div>
-	<input type="button" value="ColorPicker" />
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-taret=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="brand" href="#">Felix Color Picker</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="#Overview">Overview</a></li>
+						<li><a href="#Usage">Usage</a></li>
+						<li><a href="#Options">Options</a></li>
+						<li><a href="#Methods">Methods</a></li>
+						<li><a href="#Examples">Examples</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- //Container -->
+	<div class="container">
+		<!-- Header -->
+		<header class="felix subhead" id="Overview">
+			<h1>Felix Color Pikcer</h1>
+			<p class="lead">This is jQuery-plugin for color picker.</p>
+			<p class="lead">This is static color picker</p>
+			<a href="https://github.com/aceedith/FelixColorPicker" class="btn btn-success">Go to GitHub</a>
+			<a href="https://github.com/aceedith/FelixColorPicker/zipball/master" class="btn btn-primary">Download</a>
+		</header>
+		<!-- //Header -->
+
+		<!-- Overview -->
+		<section id="Overview" class="section">
+			<div class="page-header">
+				<h1>Felix Color Picker Overview</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="row">
+						<div class="span12">
+							<h3>Preview</h3>
+							<div class="row">
+								<div class="span6">
+									<div id="picker01"></div>
+									<div class="select-color"></div>
+								</div>
+								<div class="span6">
+									<div id="picker02">Color Picker</div>
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span3">
+							<h3>About Felix Color Picker</h3>
+							<p>This is color picker.</p>
+							<p>This is static color picker.</p>
+							<p>It's useful for your color selector.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- //Overview -->
+
+		<!-- Usage -->
+		<section id="Usage" class="section">
+			<div class="page-header">
+				<h1>Usage</h1>
+			</div>
+			<div class="row">
+				<div class="span6">
+					<div class="row">
+						<div class="span6">
+							<h3>Default Usage</h3>
+							This is default usage.
+						</div>
+					</div>
+					<div class="row">
+						<div class="span6">
+							<h3>Javascript</h3>
+	<pre class="prettyprint">
+
+$('#picker').felixColorPicker();
+	</pre>
+						</div>
+					</div>
+				</div>
+				<div class="span6">
+					<h3>HTML Structure</h3>
+					<pre class="prettyprint">
+
+	&lt;div id="picker"&gt;&lt;/div&gt;
+					</pre>
+				</div>
+			</div>
+		</section>
+		<!-- //Usage -->
+
+		<!-- Options -->
+		<section id="Options" class="section">
+			<div class="page-header">
+				<h1>Options</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>Create with options</h3>
+					<pre class="prettyprint">
+
+	$('#picker').felixSlider({
+		colors : DefaultColorArray	// Colors
+		pickerMode : false,		// ture or false : if it's true, ColorPicker show up after click event. if it's false, ColorPicker append into element.
+		pickerWidth : 11,		// each color's width
+		pickerHeight : 11,		// each color's height
+		layerWidth : 204,		// ColorPicker layer's width
+		layerHeight : 85,		// ColorPicker lyaer's height
+		layerStyle : 'border: 1px solid black; padding: 2px; background-color: white;',
+						// ColorPicker's style setup
+		pickerStyle : 'border: 1px solid #A0A0A0; margin: 2px',
+						// each color's style setup
+		select : null,			// color select event
+		zIndex : 10000			// z-index value
+	});
+					</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>Option change of created slider</h3>
+					<pre class="prettyprint">
+	
+	// Getter
+		$('#picker').felixSlider('option', 'colors');
+	// Setter
+		$('#picker').felixSlider('option', 'colors', ['#FFCCFF', '#FF99FF', '#CC66CC', '#66FFFF', '#FF9933', '#000066']);
+
+	// Getter
+		$('#picker').felixSlider('option', 'pickerMode');
+	// Setter
+		$('#picker').felixSlider('option', 'pickerMode', true);
+
+	// Getter
+		$('#picker').felixSlider('option', 'pickerWidth');
+	// Setter
+		$('#picker').felixSlider('option', 'pickerWidth', 10);
+
+	// Getter
+		$('#picker').felixSlider('option', 'pickerHeight');
+	// Setter
+		$('#picker').felixSlider('option', 'pickerHeight', 10);
+
+	// Getter
+		$('#picker').felixSlider('option', 'layerWidth');
+	// Setter
+		$('#picker').felixSlider('option', 'layerWidth', 200);
+
+	// Getter
+		$('#picker').felixSlider('option', 'layerHeight');
+	// Setter
+		$('#picker').felixSlider('option', 'layerHeight', 90);
+
+	// Getter
+		$('#picker').felixSlider('option', 'layerStyle');
+	// Setter
+		$('#picker').felixSlider('option', 'layerStyle', 'border: 1px solid black; padding: 2px; background-color: white;');
+
+	// Getter
+		$('#picker').felixSlider('option', 'pickerStyle');
+	// Setter
+		$('#picker').felixSlider('option', 'pickerStyle', 'border: 1px solid #A0A0A0; margin: 2px');
+
+	// Getter
+		$('#picker').felixSlider('option', 'select');
+	// Setter
+		$('#picker').felixSlider('option', 'select', function (color){
+			alert(color);
+		});
+
+	// Getter
+		$('#picker').felixSlider('option', 'zIndex');
+	// Setter
+		$('#picker').felixSlider('option', 'zIndex', 1000);
+					</pre>
+				</div>
+			</div>
+		</section>
+		<!--//Options -->
+
+		<!-- Methods -->
+		<section id="Methods" class="section">
+			<div class="page-header">
+				<h1>Methods</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>You can call methods of created slider.</h3>
+					<pre class="prettyprint">
+
+	// Destroy method
+	$('#picker').felixSlider('destroy');
+					</pre>
+				</div>
+			</div>
+		</section>
+		<!-- //Methods -->
+
+		<!-- Examples -->
+		<section id="Examples" class="section">
+			<div class="page-header">
+				<h1>Examples</h1>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>Default</h3>
+					<div class="row">
+						<div class="span12">
+							<h4>Preview</h4>
+							<div id="picker03"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<h4>Options</h4>
+			<pre class="prettyprint">
+
+	$('#picker').felixColorPicker();
+			</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>Select Event</h3>
+					<div class="row">
+						<div class="span12">
+							<h4>Preview</h4>
+							<div id="picker04"></div>
+							<div class="picker04-color"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<h4>Options</h4>
+			<pre class="prettyprint">
+
+	$('#picker').felixColorPicker({
+		select: function (color){
+			$(this).next().css({
+				backgroundColor: color
+			});
+		}
+	})
+			</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<h3>Button or Select area</h3>
+					<div class="row">
+						<div class="span12">
+							<h4>Preview</h4>
+							<div id="picker05"></div>
+							<input type="button" id="picker06" value="Picker" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<h4>Options</h4>
+			<pre class="prettyprint">
+
+	$('#picker').felixColorPicker({
+		pickerMode: true,
+		select: function (color){
+			$(this).css({
+				backgroundColor: color
+			});
+		}
+	});
+			</pre>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //Container -->
 </body>
 </html>
